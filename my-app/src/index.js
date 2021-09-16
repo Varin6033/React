@@ -4,19 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-function MyInfo(){
-  return(
-    <div>
-      <h1>Varin Upadhyay</h1>
-      <p>I live in Toronto</p>
-      <ul>
-        <li>US</li>
-        <li>India</li>
-        <li>Japan</li>
-      </ul>
-    </div>
-  )
-}
+import MyInfo from "./components/MyInfo"
 
 ReactDOM.render(<MyInfo />, document.getElementById("root"))
 // If you want to start measuring performance in your app, pass a function
