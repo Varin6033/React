@@ -6,28 +6,28 @@ import Header from "./Header";
 import MainContent from "./MainContent"
 
 function App() {
+  const date = new Date(2018, 6, 31, 15)
+  const hours = date.getHours()
+  let timeOfDay
+  const styles = {
+    fontSize: 40
+  }
+
+  if(hours < 12) {
+    timeOfDay = "morning"
+    styles.color = "black"
+  } else if(hours >= 12 && hours < 17){
+    timeOfDay = "afternoon"
+    styles.color = "blue"
+  } else {
+    timeOfDay = "night"
+    styles.color = "red"
+  }
+
+  
+
   return (
-    <div>
-      <Header />
-      <MainContent />
-      <Footer />
-    </div>
-    /*<div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>*/
+    <h1 style={styles}>Good {timeOfDay}</h1>
   );
 }
 
