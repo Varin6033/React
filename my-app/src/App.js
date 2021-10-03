@@ -9,15 +9,16 @@ import Joke from './components/Joke';
 import jokesData from './jokesData';
 import productsData from './vschoolProducts'
 import Product from './components/Product';
+import todosData from './todosData';
 
 function App() {
 
-  const productComponenets = productsData.map(item => <Product key={item.id} product={item} />)
-  return(
-    <div>
-        {productComponenets}
+  const todoItems = todosData.map(item => <TodoItem key={item.id} item={item}/>)
+  return (
+    <div className="todo-list">
+      {todoItems}
     </div>
-  )
+)
 }
 
 export default App;
