@@ -9,7 +9,6 @@ import Joke from './components/Joke';
 import jokesData from './jokesData';
 import productsData from './vschoolProducts'
 import Product from './components/Product';
-import todosData from './todosData';
 
 function App() {
 
