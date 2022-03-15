@@ -7,24 +7,25 @@ import React, {Component} from "react"
 // or "out" if the user is logged out.
 
 class App extends Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
             isLoggedIn: true
         }
     }
-    render(){
+    
+    render() {
         let wordDisplay
-        if(this.state.isLoggedIn){
-          wordDisplay = "in"
+        if (this.state.isLoggedIn === true) {
+            wordDisplay = "in"
         } else {
-          wordDisplay = "out"
+            wordDisplay = "out"
         }
         return (
-        <div>
-            <h1>You are currently logged {wordDisplay}</h1>
-        </div>
-        )    
+            <div>
+                <h1>You are currently logged {wordDisplay}</h1>
+            </div>
+        )
     }
 }
 
