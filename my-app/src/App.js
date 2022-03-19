@@ -5,27 +5,25 @@ import React, {Component} from "react"
 // (true if logged in, false if not)
 // Then, give your best shot at rendering the word "in" if the user is logged in
 // or "out" if the user is logged out.
+import TodoItem from "./components/TodoItem"
+import todosData from "./todosData"
 
-class App extends Component {
+class App extends React.Component {
     constructor() {
         super()
         this.state = {
-            isLoggedIn: true
+            todos: todosData
         }
     }
     
     render() {
-        let wordDisplay
-        if (this.state.isLoggedIn === true) {
-            wordDisplay = "in"
-        } else {
-            wordDisplay = "out"
-        }
+        const todoItems = this.state.todos.map(item => <TodoItem key={item.id} item={item}/>)
+        
         return (
-            <div>
-                <h1>You are currently logged {wordDisplay}</h1>
+            <div className="todo-list">
+                {todoItems}
             </div>
-        )
+        )    
     }
 }
 
