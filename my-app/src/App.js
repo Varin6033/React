@@ -5,20 +5,26 @@ class App extends Component{
     constructor(){
         super()
         this.state = {
-            unreadMessages: ["a", "b"]
+            isLoggedIn: false
         }
+        this.handleClick = this.handleClick.bind(this)
     }
-    // &&
-    // true && false
 
+    handleClick(){
+        this.setState(prevState => {
+            return {
+                isLoggedIn : !prevState.isLoggedIn
+            }
+        })
+    }
     
     render() {
+        let buttonText = this.state.isLoggedIn ? "Log out" : "Log in"
+        let displayText = this.state.isLoggedIn ? "Logged In" : "Logged out"
         return (
             <div>
-                {
-                    this.state.unreadMessages.length > 0 && 
-                    <h2>You have {this.state.unreadMessages.length} unread messages!</h2>
-                }
+                <button onClick={this.handleClick}>{buttonText}</button>
+                <h1>{displayText}</h1>
             </div>
         )
     }
