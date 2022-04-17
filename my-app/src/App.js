@@ -1,30 +1,31 @@
 import React, {Component} from "react"
-import Conditional from "./components/Conditional"
 
-class App extends Component{
-    constructor(){
+class App extends Component {
+    constructor() {
         super()
         this.state = {
-            isLoggedIn: false
+            loading: false,
+            character: {}
         }
-        this.handleClick = this.handleClick.bind(this)
     }
 
-    handleClick(){
-        this.setState(prevState => {
-            return {
-                isLoggedIn : !prevState.isLoggedIn
-            }
-        })
+    componentDidMount(){
+        this.setState({loading: true})
+        fetch("https://swapi.dev/api/people/10/")
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    loading: false,
+                    character: data
+                })
+            })
     }
-    
+
     render() {
-        let buttonText = this.state.isLoggedIn ? "Log out" : "Log in"
-        let displayText = this.state.isLoggedIn ? "Logged In" : "Logged out"
+        const text = this.state.loading ? "Loading..." : this.state.character.name
         return (
             <div>
-                <button onClick={this.handleClick}>{buttonText}</button>
-                <h1>{displayText}</h1>
+                <p>{text}</p>
             </div>
         )
     }
