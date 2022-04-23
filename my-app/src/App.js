@@ -5,21 +5,22 @@ class App extends Component {
         super()
         this.state = {
             firstName: "",
-            lastName: ""         
+            lastName: "",
+            isFriendly: true,
+            gender: "",
+            favColor: "blue"
         }
         this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange(event){
-        const {name, value} = event.target
-        this.setState({
-            [name]: value
-        })
+        const {name, value, type, checked} = event.target
+        type === "checkbox" ?  this.setState({ [name]: checked })  : this.setState({ [name]: value })
     }
 
     render() {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <input 
                     type="text" 
                     value={this.state.firstName}
@@ -35,7 +36,55 @@ class App extends Component {
                     placeholder="Last Name"  
                     onChange={this.handleChange}
                 />
-                    <h1>{this.state.firstName} {this.state.lastName}</h1>
+                <br/>
+                <textarea 
+                    value={"some default value"}
+                    onChange={this.handleChange}
+                />
+                <br/>
+                <label>
+                    <input 
+                        type="checkbox"
+                        name="isFriendly"
+                        checked={this.state.isFriendly}
+                        onChange={this.handleChange}
+                    />Is friendly?
+                </label>
+                <br/>
+                <label>
+                    <input 
+                        type="radio"
+                        name="gender"
+                        value = "male"
+                        checked={this.state.gender === "male"}
+                        onChange={this.handleChange}
+                    />Male
+                </label>
+                <br/>
+                <label>
+                    <input 
+                        type="radio"
+                        name="gender"
+                        value = "female"
+                        checked={this.state.gender === "female"}
+                        onChange={this.handleChange}
+                    />Female
+                </label>
+                <label>Favourite Color:</label>
+                <br/>
+                <select 
+                    value={this.state.favColor}
+                    onChange={this.handleChange}
+                    name="favColor"
+                >
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                    <option value="red">Red</option>
+                </select>
+                <h1>{this.state.firstName} {this.state.lastName}</h1>
+                <h2>You are a {this.state.gender}</h2>
+                <h2>Your Favourite color is {this.state.favColor}</h2>
+                <button >Submit</button>
             </form>
         )
     }
